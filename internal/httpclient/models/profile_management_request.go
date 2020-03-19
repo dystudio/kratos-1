@@ -7,7 +7,7 @@ package models
 
 import (
 	"github.com/go-openapi/errors"
-	strfmt "github.com/go-openapi/strfmt"
+	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 	"github.com/go-openapi/validate"
 )
@@ -18,18 +18,19 @@ import (
 // (especially traits) in a selfservice manner.
 //
 // For more information head over to: https://www.ory.sh/docs/kratos/selfservice/profile
+//
 // swagger:model profileManagementRequest
 type ProfileManagementRequest struct {
+
+	// FormActive, if set, contains the registration method that is being used. It is initially
+	// not set.
+	Active string `json:"active,omitempty"`
 
 	// ExpiresAt is the time (UTC) when the request expires. If the user still wishes to update the profile,
 	// a new request has to be initiated.
 	// Required: true
 	// Format: date-time
 	ExpiresAt *strfmt.DateTime `json:"expires_at"`
-
-	// FormActive, if set, contains the registration method that is being used. It is initially
-	// not set.
-	FormActive string `json:"form_active,omitempty"`
 
 	// id
 	// Required: true
